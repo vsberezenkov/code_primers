@@ -42,7 +42,7 @@ $targetFiles = "*.csv"
 $mailSubj = "Контроль выгрузки чего-то там от $CurDateTime"
 $mailBody = "Внимание! `n отсутствуют актуальные данные чего-то там ($hostname) по пути: `n"
 
-Get-ChildItem $FullPath -Recurse -Directory -Depth 01 Where-Object {($_.FullName -match $pathPattern)} foreach-object { 
+Get-ChildItem $FullPath -Recurse -Directory -Depth 0| Where-Object {($_.FullName -match $pathPattern)} | foreach-object { 
     $CurDir $_.FullName
     $prop1 @{Expression='Name'; Ascending=$true}
     $prop2 @{Expression='LastWriteTime'; Descending=$true}
